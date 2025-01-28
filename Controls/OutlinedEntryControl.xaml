@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    x:Class="HeroDex.Controls.OutlinedEntryControl"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:handlers="clr-namespace:HeroDex.Handlers"
+    x:Name="this">
+
+    <Border
+        x:Name="MainBorder"
+        Grid.Row="0"
+        Padding="10,3"
+        Stroke="{Binding Source={x:Reference this}, Path=UnfocusColor}"
+        StrokeShape="RoundRectangle 8"
+        StrokeThickness="1.6">
+
+        <handlers:BorderlessEntry
+            x:Name="EntryField"
+            Focused="EntryField_Focused"
+            FontFamily="{Binding Source={x:Reference this}, Path=FontFamily}"
+            FontSize="{Binding Source={x:Reference this}, Path=FontSize}"
+            IsPassword="{Binding Source={x:Reference this}, Path=IsPassword}"
+            IsReadOnly="{Binding Source={x:Reference this}, Path=IsReadOnly}"
+            Keyboard="{Binding Source={x:Reference this}, Path=Keyboard}"
+            Text="{Binding Source={x:Reference this}, Path=Text}"
+            TextColor="{Binding Source={x:Reference this}, Path=TextColor}"
+            Unfocused="EntryField_Unfocused" />
+
+    </Border>
+
+    <Label
+        x:Name="PlaceholderLabel"
+        Grid.Row="0"
+        Margin="12,0,0,0"
+        Padding="5,0"
+        BackgroundColor="{Binding Source={x:Reference this}, Path=PlaceholderBackgroundColor}"
+        FontFamily="{Binding Source={x:Reference this}, Path=FontFamily}"
+        FontSize="{Binding Source={x:Reference this}, Path=FontSize}"
+        HorizontalOptions="StartAndExpand"
+        Text="{Binding Source={x:Reference this}, Path=Placeholder}"
+        TextColor="{Binding Source={x:Reference this}, Path=UnfocusColor}"
+        VerticalOptions="CenterAndExpand" />
+
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+    </Grid.GestureRecognizers>
+</Grid>

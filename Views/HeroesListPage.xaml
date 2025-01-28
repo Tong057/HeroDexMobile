@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HeroDex.Views.HeroesListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:HeroDex.Controls"
+    xmlns:cvt="clr-namespace:HeroDex.Converters"
+    xmlns:dx="http://schemas.devexpress.com/maui"
+    BackgroundColor="#f6f4f3">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding CurrentHeroType, Converter={StaticResource HeroTypeToTextConverter}}" 
+    Command="{Binding ToggleHeroTypeCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <cvt:HeroTypeToBudgeColorConverter x:Key="HeroTypeToColorConverter" />
+            <cvt:HeroTypeToTextConverter x:Key="HeroTypeToTextConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid
+        Padding="10"
+        RowDefinitions="Auto, *"
+        RowSpacing="5">
+        <controls:OutlinedEntryControl
+            Margin="10"
+            FocusColor="#b816fe"
+            FontSize="17" 
+            Placeholder="Search"
+            PlaceholderBackgroundColor="#f6f4f3"
+            Text="{Binding SearchText}"
+            TextColor="Black"
+            UnfocusColor="DarkGray"
+            VerticalOptions="Start" />
+
+
+
+        <dx:DXCollectionView
+            x:Name="HeroesCollectionView"
+            Grid.Row="1"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsRefreshing}"
+            ItemsSource="{Binding HeroesList}"
+            PullToRefreshCommand="{Binding RefreshHeroListCommand}"
+            Scrolled="OnCollectionViewScrolled"
+            SelectionMode="None"
+            TapCommand="{Binding GoToEditHeroPageCommand}">
+            <dx:DXCollectionView.ItemTemplate>
+                <DataTemplate>
+                    <dx:SwipeContainer FullSwipeMode="Both">
+                        <dx:SwipeContainer.ItemView>
+
+                            <Border Stroke="Transparent" StrokeShape="RoundRectangle 25">
+
+                                <Grid
+                                    Margin="5"
+                                    Padding="15"
+                                    BackgroundColor="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--  Name  -->
+                                    <Label
+                                        Grid.Row="0"
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding Name}"
+                                        TextColor="Black" />
+
+                                    <!--  Hero Type  -->
+                                    <Label
+                                        Grid.Row="1"
+                                        FontSize="14"
+                                        Text="{Binding HeroType}"
+                                        TextColor="Gray" />
+
+                                    <Border
+                                        Grid.RowSpan="2"
+                                        Grid.Column="1" Opacity="0.9"
+                                        BackgroundColor="{Binding HeroType, Converter={StaticResource HeroTypeToColorConverter}}"
+                                        HeightRequest="40"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 20"
+                                        WidthRequest="10" />
+                                </Grid>
+                            </Border>
+
+                        </dx:SwipeContainer.ItemView>
+
+                        <dx:SwipeContainer.StartSwipeItems>
+                            <dx:SwipeContainerItem
+                                BackgroundColor="Red"
+                                Caption="Delete"
+                                Command="{Binding Path=BindingContext.DeleteHeroCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                CommandParameter="{Binding .}"
+                                FontColor="White"
+                                FontAttributes="Bold"
+                                FontSize="16" />
+                        </dx:SwipeContainer.StartSwipeItems>
+
+                        <dx:SwipeContainer.EndSwipeItems>
+                            <dx:SwipeContainerItem
+                                BackgroundColor="Red"
+                                Caption="Delete"
+                                Command="{Binding Path=BindingContext.DeleteHeroCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                CommandParameter="{Binding .}"
+                                FontColor="White" FontAttributes="Bold"
+                                FontSize="16" /> 
+
+                        </dx:SwipeContainer.EndSwipeItems>
+                    </dx:SwipeContainer>
+                </DataTemplate>
+            </dx:DXCollectionView.ItemTemplate>
+
+        </dx:DXCollectionView>
+
+        <ActivityIndicator
+            Grid.RowSpan="2"
+            HorizontalOptions="Center"
+            IsEnabled="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"
+            VerticalOptions="Center"
+            Color="#b816fe" />
+
+
+
+        <ImageButton
+            x:Name="FloatingButton"
+            Grid.Row="1"
+            Margin="12" 
+            Aspect="AspectFill"
+            BackgroundColor="#b816fe"
+            Command="{Binding GoToCreateHeroPageCommand}"
+            CornerRadius="50"
+            HeightRequest="65"
+            HorizontalOptions="End"
+            Source="plus.png"
+            VerticalOptions="End"
+            WidthRequest="65" />
+
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="HeroDex.Views.Popups.CreateAbilityPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:HeroDex.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Color="Transparent">
+
+    <Border Padding="30" Background="White">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="25" />
+        </Border.StrokeShape>
+
+        <VerticalStackLayout Spacing="5" WidthRequest="350">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="Ability"
+                TextColor="Black" />
+            <controls:OutlinedEntryControl
+                x:Name="NameField"
+                Grid.Row="4"
+                Margin="10"
+                FocusColor="#b816fe"
+                FontSize="17"
+                Placeholder="Name"
+                PlaceholderBackgroundColor="White"
+                TextColor="Black"
+                UnfocusColor="DarkGray"
+                VerticalOptions="Start" />
+
+            <controls:OutlinedEditorControl
+                x:Name="DescriptionField"
+                Grid.Row="4"
+                Margin="10"
+                FocusColor="#b816fe"
+                FontSize="17"
+                Placeholder="Description"
+                PlaceholderBackgroundColor="White"
+                TextColor="Black"
+                UnfocusColor="DarkGray"
+                VerticalOptions="Start" />
+
+            <controls:OutlinedEntryControl
+                x:Name="PowerField"
+                Grid.Row="4"
+                Margin="10"
+                FocusColor="#b816fe"
+                FontSize="17"
+                Keyboard="Numeric"
+                Placeholder="Power (0-100)"
+                PlaceholderBackgroundColor="White"
+                TextColor="Black"
+                UnfocusColor="DarkGray"
+                VerticalOptions="Start" />
+
+            <Button
+                BackgroundColor="#b816fe"
+                Clicked="Button_Clicked"
+                FontSize="17"
+                Text="Create"
+                TextColor="White" />
+        </VerticalStackLayout>
+    </Border>
+
+</toolkit:Popup>
