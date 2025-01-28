@@ -1,4 +1,4 @@
-# .NET MAUI Project - Client Application
+# HeroDexMobile - .NET MAUI Project
 
 The client application allows users to perform all CRUD operations (Create, Read, Update, Delete). The primary idea of the application is to interact with heroes from various cinematic multiverses.
 
