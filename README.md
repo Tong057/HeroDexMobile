@@ -24,7 +24,7 @@ Before running the project, ensure you have the following installed on your syst
 ## Steps to Run the Project
 
 # 1. Clone the Repository
-git clone <[repository-url](https://github.com/Tong057/HeroDexMobile)>
+git clone https://github.com/Tong057/HeroDexMobile
 
 # 2. Open the Project
 # Open the solution file (.sln) in Visual Studio 2022.
