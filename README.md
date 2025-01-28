@@ -27,23 +27,23 @@ Before running the project, ensure you have the following installed on your syst
 git clone https://github.com/Tong057/HeroDexMobile
 
 # 2. Open the Project
-# Open the solution file (.sln) in Visual Studio 2022.
+Open the solution file (.sln) in Visual Studio 2022.
 
 # 3. Restore Dependencies
 dotnet restore
 
 # 4. Select the Target Platform
-# In Visual Studio, use the Run/Debug Configuration dropdown to select:
-# - Android Emulator
-# - iOS Simulator
-# - Windows (for local deployment)
+In Visual Studio, use the Run/Debug Configuration dropdown to select:
+- Android Emulator
+- iOS Simulator
+- Windows (for local deployment)
 
 # 5. Build the Project
-# Build the solution via Visual Studio:
-# - Navigate to "Build" > "Build Solution" or press Ctrl+Shift+B.
+Build the solution via Visual Studio:
+- Navigate to "Build" > "Build Solution" or press Ctrl+Shift+B.
 
 # 6. Run the Application
-# Press F5 or click "Run" to deploy the application to the selected platform.
+Press F5 or click "Run" to deploy the application to the selected platform.
 
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
