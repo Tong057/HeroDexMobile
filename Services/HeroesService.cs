@@ -94,7 +94,6 @@ namespace HeroDex.Services
             response.EnsureSuccessStatusCode();
         }
 
-
         public async Task DeleteHeroAsync(string id)
         {
             var response = await _httpClient.DeleteAsync($"/heroes/delete?id={id}");
